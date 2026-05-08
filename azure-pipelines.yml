@@ -36,3 +36,19 @@ stages:
         PathtoPublish: 'Frontend/dist' 
         ArtifactName: 'MediSync-Build'
         publishLocation: 'Container'
+# ... keep your BuildStage here ...
+#this stage is coz this is a new of writing the release state
+- stage: Deploy
+  displayName: 'Deploy to Web'
+  dependsOn: BuildStage # This ensures we only deploy if the build works
+  jobs:
+  - deployment: DeployWeb
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'production' # This will create an "Environments" record in your sidebar
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying MediSync to the cloud..."
+            displayName: 'Deployment Step'

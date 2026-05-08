@@ -1,7 +1,5 @@
 # Node.js with React
-# Build a Node.js project that uses React.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# Build a Node.js project that uses React for MediSync.
 
 trigger:
   branches:
@@ -9,21 +7,32 @@ trigger:
     - Ml
 
 stages:
-- stage: __default
+- stage: BuildStage
+  displayName: 'Build MediSync Frontend'
   jobs:
-  - job: Job
+  - job: BuildJob
     pool:
       vmImage: ubuntu-latest
     steps:
+    # 1. Setup Node.js environment
     - task: NodeTool@0
       inputs:
         versionSpec: '20.x'
       displayName: 'Install Node.js'
 
+    # 2. Install dependencies and compile the React app
     - task: CmdLine@2
       displayName: 'npm install and build'
       inputs:
         script: |
           npm install
           npm run build
-        workingDirectory: 'Frontend' # <--- ADD THIS LINE HERE
+        workingDirectory: 'Frontend'
+
+    # 3. Save the build folder so you can download it later
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Build Artifacts'
+      inputs:
+        PathtoPublish: 'Frontend/build' 
+        ArtifactName: 'MediSync-Build'
+        publishLocation: 'Container'

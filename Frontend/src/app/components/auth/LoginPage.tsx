@@ -148,7 +148,7 @@ export function LoginPage({ onNavigate, onSignup }: LoginPageProps) {
           className="text-center mb-12"
         >
           <h1 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-gray-900 via-teal-800 to-cyan-700 bg-clip-text text-transparent">
-            Welcome to Medisync
+            Welcome to 
           </h1>
           <p className="text-xl text-gray-600">Select your role to continue</p>
         </motion.div>

@@ -26,13 +26,13 @@ stages:
       inputs:
         script: |
           npm install
-          npm run build
+          CI=false npm run build
         workingDirectory: 'Frontend'
 
-    # 3. Save the build folder so you can download it later
+    # 3. Save the build folder (Updated to 'dist')
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Build Artifacts'
       inputs:
-        PathtoPublish: 'Frontend/build' 
+        PathtoPublish: 'Frontend/dist' 
         ArtifactName: 'MediSync-Build'
         publishLocation: 'Container'

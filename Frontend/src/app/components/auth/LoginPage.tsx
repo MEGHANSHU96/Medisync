@@ -148,7 +148,7 @@ export function LoginPage({ onNavigate, onSignup }: LoginPageProps) {
           className="text-center mb-12"
         >
           <h1 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-gray-900 via-teal-800 to-cyan-700 bg-clip-text text-transparent">
-            Welcome to Medisync
+            Welcome to Medi
           </h1>
           <p className="text-xl text-gray-600">Select your role to continue</p>
         </motion.div>
@@ -220,7 +220,7 @@ export function LoginPage({ onNavigate, onSignup }: LoginPageProps) {
                   <label className="block text-sm font-medium mb-2">Email</label>
                   <Input
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter your email plz"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -231,7 +231,7 @@ export function LoginPage({ onNavigate, onSignup }: LoginPageProps) {
                   <label className="block text-sm font-medium mb-2">Password</label>
                   <Input
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="Enter your password p"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
